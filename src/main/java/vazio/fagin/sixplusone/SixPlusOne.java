@@ -16,8 +16,7 @@ public class SixPlusOne {
 
 	public SixPlusOne() {
 		setSixNumbers(getNumberPool());		
-		setBonusNumber(getBonusPool());
-		
+		setBonusNumber(getBonusPool());		
 	}
 
 	public int[] getSixNumbers() {		
@@ -68,6 +67,10 @@ public class SixPlusOne {
 			}
 		}		
 		System.out.print(displaySixNumbers);
+	}
+
+	public void displayBonusNumber() {
+		System.out.print(bonusNumber);		
 	}
 
 	

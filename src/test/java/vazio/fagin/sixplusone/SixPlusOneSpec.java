@@ -40,7 +40,7 @@ public class SixPlusOneSpec {
 	}
 	
 	@Test
-	public void whenDisplaySixNumbersThenSixNumbersSeparatedWithComma() {
+	public void whenDisplaySixNumbersThenPrintSixNumbersSeparatedWithComma() {
 		sixPlusOne.displaySixNumbers();
 		assertEquals(printSixNumbers(), outContent.toString());
 	}
@@ -58,5 +58,13 @@ public class SixPlusOneSpec {
 		return printSixNumbers;
 	}
 	
+	@Test
+	public void whenDisplayBonusNumberThenPrintBonusNumber() {
+		sixPlusOne.displayBonusNumber();
+		assertEquals(printBonusNumber(), outContent.toString());
+	}
 	
+	private String printBonusNumber() {
+		return String.valueOf(sixPlusOne.getBonusNumber());
+	}
 }
