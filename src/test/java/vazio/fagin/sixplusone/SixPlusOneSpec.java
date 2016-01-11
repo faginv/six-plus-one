@@ -67,4 +67,18 @@ public class SixPlusOneSpec {
 	private String printBonusNumber() {
 		return String.valueOf(sixPlusOne.getBonusNumber());
 	}
+	
+	@Test
+	public void whenEnterSixNumbersThenSetSixNumbersOfSixPlusOne() {
+		int[] sixNumbers = {1, 2, 3, 4, 5, 40};
+		sixPlusOne.setSixNumbers(sixNumbers);
+		assertTrue(sixPlusOne.getSixNumbers() == sixNumbers);
+	}
+	
+	@Test 
+	public void whenEnterOneBonusNumberThenSetOneBonusNumberOfSixPlusOne() {
+		int bonusNumber = 1;
+		sixPlusOne.setBonusNumber(bonusNumber);
+		assertTrue(sixPlusOne.getBonusNumber() == bonusNumber);
+	}
 }

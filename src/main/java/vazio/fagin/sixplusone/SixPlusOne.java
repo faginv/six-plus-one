@@ -15,8 +15,13 @@ public class SixPlusOne {
 	private int bonusNumber;
 
 	public SixPlusOne() {
-		setSixNumbers(getNumberPool());		
-		setBonusNumber(getBonusPool());		
+		pickSixNumbers(getNumberPool());		
+		pickBonusNumber(getBonusPool());		
+	}
+	
+	public SixPlusOne(int[] sixNumbers, int bonusNumber) {
+		this.sixNumbers = sixNumbers;
+		this.bonusNumber = bonusNumber;
 	}
 
 	public int[] getSixNumbers() {		
@@ -27,7 +32,7 @@ public class SixPlusOne {
 		return getIntegerList(SIX_NUMBERS_POOL_MAX);
 	}
 	
-	private void setSixNumbers(ArrayList<Integer> numbers) {		
+	private void pickSixNumbers(ArrayList<Integer> numbers) {		
 		int[] sixNumbers = new int[6];
 		for(int i = 0; i < SIX_NUMBERS_LENGTH; i++) {
 			sixNumbers[i] = numbers.get(i);
@@ -43,7 +48,7 @@ public class SixPlusOne {
 		return getIntegerList(BONUS_NUMBER_MAX);
 	}
 
-	private void setBonusNumber(ArrayList<Integer> bonus) {		
+	private void pickBonusNumber(ArrayList<Integer> bonus) {		
 		this.bonusNumber = bonus.get(FIRST_BONUS_NUMBER);
 	}
 	
@@ -71,6 +76,14 @@ public class SixPlusOne {
 
 	public void displayBonusNumber() {
 		System.out.print(bonusNumber);		
+	}
+
+	public void setSixNumbers(int[] sixNumbers) {
+		this.sixNumbers = sixNumbers;
+	}
+
+	public void setBonusNumber(int bonusNumber) {
+		this.bonusNumber = bonusNumber;
 	}
 
 	
