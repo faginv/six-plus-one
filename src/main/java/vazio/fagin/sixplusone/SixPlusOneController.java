@@ -1,13 +1,19 @@
 package vazio.fagin.sixplusone;
 
+import java.util.Scanner;
+
 public class SixPlusOneController {
 
 	SixPlusOneCollection sixPlusOneCollection;
+	
+	Scanner scanner;
 	
 	public SixPlusOneController() {
 		sixPlusOneCollection = new SixPlusOneCollection();
 		SixPlusOne sixPlusOne = new SixPlusOne();
 		sixPlusOneCollection.add(sixPlusOne);
+		
+		scanner = new Scanner(System.in);
 	}
 	
 	public void displayBonusNumberPrompt() {
@@ -50,6 +56,11 @@ public class SixPlusOneController {
 
 	public int[] readSixNumbersInSixPlusOne() {
 		return sixPlusOneCollection.getSixPlusOnes().get(0).getSixNumbers();
+	}
+
+	public int getKeyValue() {
+		int keyValue = scanner.nextInt();
+		return keyValue;
 	}
 
 	

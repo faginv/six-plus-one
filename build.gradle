@@ -7,6 +7,7 @@ repositories {
 }
 
 dependencies {
+	compile 'com.github.stefanbirkner:system-rules:1.15.1'
     compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
     testCompile group: 'junit', name: 'junit', version: '4.+'
 }
