@@ -1,5 +1,6 @@
 package vazio.fagin.sixplusone;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class SixPlusOneController {
@@ -10,8 +11,6 @@ public class SixPlusOneController {
 	
 	public SixPlusOneController() {
 		sixPlusOneCollection = new SixPlusOneCollection();
-		SixPlusOne sixPlusOne = new SixPlusOne();
-		sixPlusOneCollection.add(sixPlusOne);
 		
 		scanner = new Scanner(System.in);
 	}
@@ -32,11 +31,9 @@ public class SixPlusOneController {
 	}
 
 	public void storeBonusNumberInSixPlusOne(int bonusNumber) {	
-		sixPlusOneCollection.getSixPlusOnes().get(0).setBonusNumber(bonusNumber);
-	}
-
-	public int readBonusNumberInSixPlusOne() {		
-		return sixPlusOneCollection.getSixPlusOnes().get(0).getBonusNumber();
+		SixPlusOne sixPlusOne = new SixPlusOne();
+		sixPlusOne.setBonusNumber(bonusNumber);
+		sixPlusOneCollection.add(sixPlusOne);
 	}
 
 	public void displaySixNumbersPrompt() {
@@ -51,16 +48,37 @@ public class SixPlusOneController {
 	}
 
 	public void storeSixNumbersInSixPlusOne(int[] sixNumbers) {
-		sixPlusOneCollection.getSixPlusOnes().get(0).setSixNumbers(sixNumbers);
+		SixPlusOne sixPlusOne = new SixPlusOne();
+		sixPlusOne.setSixNumbers(sixNumbers);
+		sixPlusOneCollection.add(sixPlusOne);
 	}
 
-	public int[] readSixNumbersInSixPlusOne() {
-		return sixPlusOneCollection.getSixPlusOnes().get(0).getSixNumbers();
+	public ArrayList<SixPlusOne> getSixPlusOnes() {
+		ArrayList<SixPlusOne> sixPlusOnes = sixPlusOneCollection.getSixPlusOnes();	
+		return sixPlusOnes;
 	}
 
 	public int getKeyValue() {
 		int keyValue = scanner.nextInt();
 		return keyValue;
+	}
+
+	public void storeSixNumbersAndBonusInSixPlusOne(int[] sixNumbers, int bonusNumber) {
+		SixPlusOne sixPlusOne = new SixPlusOne();
+		sixPlusOne.setSixNumbers(sixNumbers);
+		sixPlusOne.setBonusNumber(bonusNumber);
+		sixPlusOneCollection.add(sixPlusOne);		
+	}
+
+	public boolean checkNumbers(int[] sixNumbers) {
+		for(int i = 0; i < SixPlusOne.SIX_NUMBERS_LENGTH - 1; i++) {
+			for(int j = i + 1; j < SixPlusOne.SIX_NUMBERS_LENGTH; j++) {
+				if(sixNumbers[i] == sixNumbers[j]) {
+					return false;
+				}
+			}
+		}		
+		return true;		
 	}
 
 	

@@ -86,7 +86,19 @@ public class SixPlusOne {
 		this.bonusNumber = bonusNumber;
 	}
 
-	
+	@Override
+	public String toString() {
+		String displayString = "Lucky Number: ";
+		int lastItem = SIX_NUMBERS_LENGTH - 1;
+		for(int i = 0; i < SIX_NUMBERS_LENGTH; i++) {
+			displayString += sixNumbers[i];
+			if(i != lastItem) {
+				displayString += ", ";
+			}
+		}
+		displayString += "   Bonus: " + bonusNumber;
+		return displayString;
+	}
 	
 	
 

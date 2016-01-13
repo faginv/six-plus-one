@@ -68,7 +68,7 @@ public class SixPlusOneControllerSpec {
 	public void whenRightNumberThenStoreSixPlusOneBonusNumber() {
 		int bonusNumber = 1;
 		sixPlusOneController.storeBonusNumberInSixPlusOne(bonusNumber);
-		assertEquals(bonusNumber, sixPlusOneController.readBonusNumberInSixPlusOne());
+		assertEquals(bonusNumber, sixPlusOneController.getSixPlusOnes().get(0).getBonusNumber());
 	}
 	
 	@Test
@@ -96,7 +96,7 @@ public class SixPlusOneControllerSpec {
 	public void whenRightSixNumbersThenStoreSixPlusOneSixNumbers() {
 		int[] sixNumbers = {1, 3, 5, 7, 8, 28};
 		sixPlusOneController.storeSixNumbersInSixPlusOne(sixNumbers);
-		assertEquals(sixNumbers, sixPlusOneController.readSixNumbersInSixPlusOne());
+		assertEquals(sixNumbers, sixPlusOneController.getSixPlusOnes().get(0).getSixNumbers());
 	}
 	
 	@Test
@@ -135,7 +135,7 @@ public class SixPlusOneControllerSpec {
 		systemInMock.provideLines("" + bonusNumber);
 		int bonusNumberValue = sixPlusOneController.getKeyValue();
 		sixPlusOneController.storeBonusNumberInSixPlusOne(bonusNumberValue);
-		assertEquals(bonusNumber, sixPlusOneController.readBonusNumberInSixPlusOne());
+		assertEquals(bonusNumber, sixPlusOneController.getSixPlusOnes().get(0).getBonusNumber());
 	}
 	
 	@Test
@@ -161,7 +161,28 @@ public class SixPlusOneControllerSpec {
 		for(int i = 0; i < sixNumbers.length; i++) {
 			sixNumbers[i] = sixPlusOneController.getKeyValue();
 		}
-		sixPlusOneController.storeSixNumbersInSixPlusOne(sixNumbers);
-		assertEquals(sixNumbers, sixPlusOneController.readSixNumbersInSixPlusOne());
+		sixPlusOneController.storeSixNumbersInSixPlusOne(sixNumbers);		
+		assertEquals(sixNumbers, sixPlusOneController.getSixPlusOnes().get(0).getSixNumbers());
+	}
+	
+	@Test
+	public void whenEnterRightSixNumbersAndBonusNumberThenStoreSixPlusOneSixNumbersAndBonus() {
+		systemInMock.provideLines("1 2 3 4 5 40");
+		int[] sixNumbers = new int[6];
+		for(int i = 0; i < sixNumbers.length; i++) {
+			sixNumbers[i] = sixPlusOneController.getKeyValue();
+		}
+		systemInMock.provideLines("2");
+		int bonusNumber = sixPlusOneController.getKeyValue();
+		sixPlusOneController.storeSixNumbersAndBonusInSixPlusOne(sixNumbers, bonusNumber);
+		assertEquals(sixNumbers, sixPlusOneController.getSixPlusOnes().get(0).getSixNumbers());
+		assertEquals(bonusNumber, sixPlusOneController.getSixPlusOnes().get(0).getBonusNumber());
+	}
+	
+	@Test
+	public void whenSixNumbersHaveSameNumbersThenReturnFalse() {
+		int[] sixNumbers = {1, 3, 5, 7, 8, 3};
+		sixPlusOneController.checkNumbers(sixNumbers);
+		assertFalse(sixPlusOneController.checkNumbers(sixNumbers));
 	}
 }

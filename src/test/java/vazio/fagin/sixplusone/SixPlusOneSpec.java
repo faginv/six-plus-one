@@ -81,4 +81,13 @@ public class SixPlusOneSpec {
 		sixPlusOne.setBonusNumber(bonusNumber);
 		assertTrue(sixPlusOne.getBonusNumber() == bonusNumber);
 	}
+	
+	@Test
+	public void whenToStringThenReturnSixPlusOneString() {
+		int[] sixNumbers = {1, 2, 3, 4, 5, 40};
+		sixPlusOne.setSixNumbers(sixNumbers);
+		int bonusNumber = 1;
+		sixPlusOne.setBonusNumber(bonusNumber);
+		assertEquals("Lucky Number: 1, 2, 3, 4, 5, 40   Bonus: 1", sixPlusOne.toString());
+	}
 }
